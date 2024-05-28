@@ -1,0 +1,73 @@
+﻿server:
+  port: 8070
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ''
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  application:
+    name: "users"
+  config:
+    profiles:
+    active:
+      - "default"
+
+info:
+  app:
+    name: "users"
+    description: "Users Project for Training"
+    version: "1.0"
+
+build:
+  version: "v1.0"
+
+contact:
+  message: "Banck System - Users API"
+  details:
+    name: "Melquis Jair Peralta Vega - Developer"
+    email: "mejapeve@gmail.com"
+  phone-numbers:
+    - (57) 312-469-8132
+
+endpoints:
+  shutdown:
+    enabled: true
+
+# Activate actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+
+#JWT Properties
+app:
+  jwt-secret: fVVntTd5WP7cyUipyLaoixkd/L3MwDj5/BM+WA5aCjxI9itG4djUbhdaKMdHnOP4fLVmX/YjW4wBksm2RbhFOQ==
+  jwt-expiration-milliseconds: 18000000
+
+# regular expression for password validation
+password:
+  regexp: ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*.])(?=\S+$).{8,}$
+  message: The password must be min 8 length containing atleast 1 uppercase, 1 lowercase, 1 special character and 1 digit
+
+# regular expression for email validation
+
+email:
+  regexp: ^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$
+  message: The email must have the following format usuario@dominio.com
+
